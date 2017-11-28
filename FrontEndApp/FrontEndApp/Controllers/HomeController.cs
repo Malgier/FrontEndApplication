@@ -11,33 +11,20 @@ namespace FrontEndApp.Controllers
 {
     public class HomeController : Controller
     {
-        static HttpClient client = new HttpClient();
-
+        [Route("Products/Index")]
         public IActionResult Index()
         {
-            client.BaseAddress = new Uri("http://localhost:54330");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.ParseAdd("application/json");
-
-            HttpResponseMessage response = client.GetAsync("/Products/Index").Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                ProductVM vm = new ProductVM();
-                vm.ProductsPartialView = response.Content.ReadAsStringAsync().Result;
-                return View(vm);
-            }
-            else
-            {
-                return View();
-            }
+            Client client = new Client();
+            PartialVM vm = client.GetClient("http://localhost:54330", "/Products/Index");
+            return View(vm);
         }
 
-        public IActionResult About()
+        [Route("Products/ProductDetails")]
+        public IActionResult ProductDetails(string EAN)
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            Client client = new Client();
+            PartialVM vm = client.GetClient("http://localhost:54330", "/Products/ProductDetails?EAN=" + EAN);
+            return View(vm);
         }
 
         public IActionResult Contact()

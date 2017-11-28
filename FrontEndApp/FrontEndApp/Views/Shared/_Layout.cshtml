@@ -1,9 +1,24 @@
 ﻿<!DOCTYPE html>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+<script>
+
+    $(function () {
+        $("#ddlProfile").hide();
+    })
+
+    function displayProfile() {
+        console.log("ola")
+    }
+
+</script>
+
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - FrontEndApp</title>
+    <title>@ViewData["Title"] - ThAmCo</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -26,22 +41,33 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">FrontEndApp</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">ThAmCo</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li onmouseover="displayProfile()"><a asp-area="" asp-controller="Home" asp-action="Index">Profile</a></li>
+                    @*<li><a asp-area="" asp-controller="Cart" asp-action="Index" class="fa fa-shopping-cart"><span class="badge"></span></a></li>*@
+                    <li><a asp-area="" asp-controller="Cart" asp-action="Index">Cart</a></li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+                    <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
+                </ul>
+                @*@await Html.PartialAsync("_LoginPartial")*@
             </div>
         </div>
+        <ul id="ddlProfile">
+            <li><a asp-area="" asp-controller="Home" asp-action="Index">Edit Profile</a></li>
+            <li><a asp-area="" asp-controller="Home" asp-action="Index">Order History</a></li>
+            <li><a asp-area="" asp-controller="Home" asp-action="Index">Messages</a></li>
+            <li><a asp-area="" asp-controller="Home" asp-action="Index">View Customers</a></li>
+        </ul>
     </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - FrontEndApp</p>
+            <p>&copy; 2017 - ThAmCo</p>
         </footer>
     </div>
 
