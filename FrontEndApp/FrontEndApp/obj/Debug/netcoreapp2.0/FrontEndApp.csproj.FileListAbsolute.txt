@@ -20,3 +20,14 @@ C:\Users\Will\Desktop\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndAp
 C:\Users\Will\Desktop\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.runtimeconfig.dev.json
 C:\Users\Will\Desktop\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.dll
 C:\Users\Will\Desktop\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.pdb
+C:\Users\Will\Desktop\SA\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.deps.json
+C:\Users\Will\Desktop\SA\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.runtimeconfig.json
+C:\Users\Will\Desktop\SA\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.runtimeconfig.dev.json
+C:\Users\Will\Desktop\SA\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.dll
+C:\Users\Will\Desktop\SA\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.pdb
+C:\Users\Will\Desktop\SA\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.csprojResolveAssemblyReference.cache
+C:\Users\Will\Desktop\SA\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.csproj.CoreCompileInputs.cache
+C:\Users\Will\Desktop\SA\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.AssemblyInfoInputs.cache
+C:\Users\Will\Desktop\SA\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.AssemblyInfo.cs
+C:\Users\Will\Desktop\SA\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.dll
+C:\Users\Will\Desktop\SA\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.pdb

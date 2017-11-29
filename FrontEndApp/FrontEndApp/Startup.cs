@@ -11,6 +11,8 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace FrontEndApp
 {
@@ -59,6 +61,29 @@ namespace FrontEndApp
             {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
+                app.Use(async (context, next) =>
+                {
+                    //Fake token
+                    var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MY TOP SECRET TEST KEY"));
+                    var claims = new Claim[]
+                    {
+                        new Claim(ClaimTypes.NameIdentifier, "1"),
+                        new Claim(ClaimTypes.Role, "Customer")
+                    };
+
+                    var token = new JwtSecurityToken(
+                        issuer: "issuer",
+                        audience: "audience",
+                        claims: claims,
+                        notBefore: DateTime.Now.Subtract(new TimeSpan(2, 1, 1)),
+                        expires: DateTime.Now.AddDays(7),
+                        signingCredentials: new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256)
+                    );
+
+                    context.Request.Headers.Add("Authorization", "Bearer " + new JwtSecurityTokenHandler().WriteToken(token));
+
+                    await next.Invoke();
+                });
             }
             else
             {

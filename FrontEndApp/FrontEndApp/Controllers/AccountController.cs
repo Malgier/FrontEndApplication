@@ -27,15 +27,16 @@ namespace FrontEndApp.Controllers
         }
 
         [HttpPost]
-        [Route("Account/Login")]
-        public IActionResult LoginReturn([FromBody] LoginViewModel model)
+        [Route("Account/LoginReturn")]
+        public IActionResult LoginReturn(LoginViewModel model)
         {
             using (HttpClient client = new HttpClient())
             {
-                var response = client.PostAsJsonAsync("https://localhost:44347/Account/Login", model).Result;
+                var response = client.PostAsJsonAsync("https://localhost:44347/Account/LoginReturn", model).Result;
                 if(response.IsSuccessStatusCode)
                 {
-                    //var conent = response.Content.ReadAsAsync()
+                    var content = response.Content.ReadAsAsync<TokenResponse>().Result;
+                    Response.Cookies.Append("token", content.AccessToken);
                 }
                 return Ok();
             }
@@ -46,6 +47,21 @@ namespace FrontEndApp.Controllers
             Client client = new Client();
             PartialVM vm = client.GetClient("https://localhost:44347/", "/Account/Register");
             return View(vm);
+        }
+
+        [HttpPost]
+        [Route("Account/RegisterUser")]
+        public IActionResult RegisterUser(RegisterViewModel model)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var response = client.PostAsJsonAsync("https://localhost:44347/Account/RegisterUser", model).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    //var conent = response.Content.ReadAsAsync()
+                }
+                return Ok();
+            }
         }
     }
 }
