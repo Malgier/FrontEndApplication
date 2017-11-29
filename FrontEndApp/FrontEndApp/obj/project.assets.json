@@ -13200,7 +13200,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\p4068830\\.nuget\\packages\\": {},
+    "C:\\Users\\Will\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -13209,17 +13209,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "U:\\University_3\\Software Architecture\\FrontEndApp\\FrontEndApp\\FrontEndApp.csproj",
+      "projectUniqueName": "C:\\Users\\Will\\Desktop\\SA\\FrontEndApp\\FrontEndApp\\FrontEndApp.csproj",
       "projectName": "FrontEndApp",
-      "projectPath": "U:\\University_3\\Software Architecture\\FrontEndApp\\FrontEndApp\\FrontEndApp.csproj",
-      "packagesPath": "C:\\Users\\p4068830\\.nuget\\packages\\",
-      "outputPath": "U:\\University_3\\Software Architecture\\FrontEndApp\\FrontEndApp\\obj\\",
+      "projectPath": "C:\\Users\\Will\\Desktop\\SA\\FrontEndApp\\FrontEndApp\\FrontEndApp.csproj",
+      "packagesPath": "C:\\Users\\Will\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Will\\Desktop\\SA\\FrontEndApp\\FrontEndApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\p4068830\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Will\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

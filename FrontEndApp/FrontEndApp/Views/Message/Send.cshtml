@@ -1,0 +1,12 @@
+﻿@model PartialVM
+
+@{
+    ViewData["Title"] = "Send";
+}
+
+<div>
+    @using (Html.BeginForm("SaveMessage", "Message", FormMethod.Post))
+    {
+        @Html.Raw(@Model.PartialView)
+    }
+</div>
