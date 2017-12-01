@@ -15,7 +15,7 @@ namespace FrontEndApp.Controllers
         public IActionResult Index()
         {
             Client client = new Client();
-            PartialVM vm = client.GetClient("http://localhost:54330", "/Products/Index");
+            PartialVM vm = client.GetClient("http://localhost:54330", "/Products/Index", "Products not Found");
             return View(vm);
         }
 
@@ -23,7 +23,7 @@ namespace FrontEndApp.Controllers
         public IActionResult ProductDetails(string EAN)
         {
             Client client = new Client();
-            PartialVM vm = client.GetClient("http://localhost:54330", "/Products/ProductDetails?EAN=" + EAN);
+            PartialVM vm = client.GetClient("http://localhost:54330", "/Products/ProductDetails?EAN=" + EAN, "Product Details Not Found");
             return View(vm);
         }
 

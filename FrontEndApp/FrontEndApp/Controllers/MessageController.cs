@@ -21,7 +21,7 @@ namespace FrontEndApp.Controllers
         public IActionResult MyMessages(int id)
         {
             Client client = new Client();
-            PartialVM vm = client.GetClient("http://localhost:50143", "/MessagesMVC/MyMessages/" + id);
+            PartialVM vm = client.GetClient("http://localhost:50143", "/MessagesMVC/MyMessages/" + id, "Messaging Service Down");
             return View(vm);
         }
 
@@ -31,7 +31,7 @@ namespace FrontEndApp.Controllers
         public IActionResult Send(int id)
         {
             Client client = new Client();
-            PartialVM vm = client.GetClient("http://localhost:50143", "/MessagesMVC/send/" + id);
+            PartialVM vm = client.GetClient("http://localhost:50143", "/MessagesMVC/send/" + id, "Messaging Service Down");
             return View(vm);
         }
 
@@ -55,7 +55,7 @@ namespace FrontEndApp.Controllers
         public IActionResult Details(int id)
         {
             Client client = new Client();
-            PartialVM vm = client.GetClient("http://localhost:50143", "/MessagesMVC/details/" + id);
+            PartialVM vm = client.GetClient("http://localhost:50143", "/MessagesMVC/details/" + id, "");
             return View(vm);
         }
     }

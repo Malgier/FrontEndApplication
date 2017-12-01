@@ -14,7 +14,7 @@ namespace FrontEndApp.Controllers
         public IActionResult Login()
         {
             Client client = new Client();
-            PartialVM vm = client.GetClient("https://localhost:44347/", "/Account/Login");
+            PartialVM vm = client.GetClient("https://localhost:44347/", "/Account/Login", "Login Service Down");
 
             //Read cookie
             string cookievalue;
@@ -45,7 +45,7 @@ namespace FrontEndApp.Controllers
         public IActionResult Register()
         {
             Client client = new Client();
-            PartialVM vm = client.GetClient("https://localhost:44347/", "/Account/Register");
+            PartialVM vm = client.GetClient("https://localhost:44347/", "/Account/Register", "Register Service Down");
             return View(vm);
         }
 

@@ -9,27 +9,40 @@ namespace FrontEndApp
 {
     public class Client
     {
-        public PartialVM GetClient(string baseLink, string path)
+        public PartialVM GetClient(string baseLink, string path, string errorMessage)
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri(baseLink);
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.ParseAdd("application/json");
-
-                HttpResponseMessage response = client.GetAsync(path).Result;
-
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    PartialVM vm = new PartialVM();
-                    vm.PartialView = response.Content.ReadAsStringAsync().Result;
-                    response.Dispose();
+                    client.BaseAddress = new Uri(baseLink);
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.ParseAdd("application/json");
 
-                    return vm;
+                    HttpResponseMessage response = client.GetAsync(path).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        PartialVM vm = new PartialVM();
+                        vm.PartialView = response.Content.ReadAsStringAsync().Result;
+                        response.Dispose();
+
+                        return vm;
+                    }
+                    else
+                    {
+                        return new PartialVM()
+                        {
+                            PartialView = "<h2>" + errorMessage + "</h2>"
+                        };
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    return new PartialVM();
+                    return new PartialVM()
+                    {
+                        PartialView = "<h2> Error </h2> <div>" + errorMessage + "</div> <div>" + e.Message + "</div>"
+                    };
                 }
             }
         }
