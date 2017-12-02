@@ -11,7 +11,7 @@ namespace FrontEndApp.Models
         public String Title { get; set; }
         public String MessageContent { get; set; }
         public DateTime DateSent { get; set; }
-        public int SenderUserID { get; set; }
-        public int ReceiverUserID { get; set; }
+        public string SenderUserID { get; set; }
+        public string ReceiverUserID { get; set; }
     }
 }

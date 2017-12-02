@@ -29,6 +29,7 @@ namespace FrontEndApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSingleton(Configuration);
 
             services.AddAuthentication(o =>
             {

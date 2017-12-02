@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FrontEndApp.Models;
 using System.Net.Http;
+using Microsoft.Extensions.Configuration;
 
 namespace FrontEndApp.Controllers
 {
     public class HomeController : Controller
     {
+        private string productServiceLink;
+
+        public HomeController(IConfiguration config)
+        {
+            productServiceLink = config.GetValue<string>("MessageService");
+        }
+
         [Route("Products/Index")]
         public IActionResult Index()
         {
@@ -23,7 +31,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["token"].ToString();
             }
 
-            PartialVM vm = client.GetClient("http://localhost:54330", "/Products/Index",cookievalue, "Products not Found");
+            PartialVM vm = client.GetClient(productServiceLink, "/Products/Index",cookievalue, "Products not Found");
             return View(vm);
         }
 
@@ -39,7 +47,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["token"].ToString();
             }
 
-            PartialVM vm = client.GetClient("http://localhost:54330", "/Products/ProductDetails?EAN=" + EAN, cookievalue, "Product Details Not Found");
+            PartialVM vm = client.GetClient(productServiceLink, "/Products/ProductDetails?EAN=" + EAN, cookievalue, "Product Details Not Found");
             return View(vm);
         }
 

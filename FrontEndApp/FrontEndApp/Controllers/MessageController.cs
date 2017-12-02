@@ -5,12 +5,20 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FrontEndApp.Models;
 using System.Net.Http;
+using Microsoft.Extensions.Configuration;
 
 namespace FrontEndApp.Controllers
 {
     [Route("[controller]")]
     public class MessageController : Controller
     {
+        private string messageServiceLink;
+
+        public MessageController(IConfiguration config)
+        {
+            messageServiceLink = config.GetValue<string>("MessageService");
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -29,7 +37,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["token"].ToString();
             }
 
-            PartialVM vm = client.GetClient("http://localhost:50143", "/MessagesMVC/MyMessages/" + id, cookievalue, "Messaging Service Down");
+            PartialVM vm = client.GetClient(messageServiceLink, "/MessagesMVC/MyMessages/" + id, cookievalue, "Messaging Service Down");
             return View(vm);
         }
 
@@ -47,7 +55,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["token"].ToString();
             }
 
-            PartialVM vm = client.GetClient("http://localhost:50143", "/MessagesMVC/send/" + id, cookievalue, "Messaging Service Down");
+            PartialVM vm = client.GetClient(messageServiceLink, "/MessagesMVC/send/" + id, cookievalue, "Messaging Service Down");
             return View(vm);
         }
 
@@ -79,7 +87,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["token"].ToString();
             }
 
-            PartialVM vm = client.GetClient("http://localhost:50143", "/MessagesMVC/details/" + id, cookievalue, "");
+            PartialVM vm = client.GetClient(messageServiceLink, "/MessagesMVC/details/" + id, cookievalue, "");
             return View(vm);
         }
     }
