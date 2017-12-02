@@ -16,7 +16,7 @@ namespace FrontEndApp.Controllers
 
         public HomeController(IConfiguration config)
         {
-            productServiceLink = config.GetValue<string>("MessageService");
+            productServiceLink = config.GetValue<string>("ProductService");
         }
 
         [Route("Products/Index")]
@@ -26,9 +26,9 @@ namespace FrontEndApp.Controllers
 
             //Read cookie
             string cookievalue = "";
-            if (Request.Cookies["token"] != null)
+            if (Request.Cookies["access_token"] != null)
             {
-                cookievalue = Request.Cookies["token"].ToString();
+                cookievalue = Request.Cookies["access_token"].ToString();
             }
 
             PartialVM vm = client.GetClient(productServiceLink, "/Products/Index",cookievalue, "Products not Found");
@@ -42,9 +42,9 @@ namespace FrontEndApp.Controllers
 
             //Read cookie
             string cookievalue = "";
-            if (Request.Cookies["token"] != null)
+            if (Request.Cookies["access_token"] != null)
             {
-                cookievalue = Request.Cookies["token"].ToString();
+                cookievalue = Request.Cookies["access_token"].ToString();
             }
 
             PartialVM vm = client.GetClient(productServiceLink, "/Products/ProductDetails?EAN=" + EAN, cookievalue, "Product Details Not Found");

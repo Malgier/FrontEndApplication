@@ -1,0 +1,12 @@
+﻿@model PartialVM
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<div>
+    @using (Html.BeginForm("EditProfilePost", "Profile", FormMethod.Post))
+    {
+        @Html.Raw(@Model.PartialView)
+    }
+</div>

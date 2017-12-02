@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using FrontEndApp.Models;
 using System.Net.Http;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FrontEndApp.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     public class MessageController : Controller
     {
@@ -32,9 +34,9 @@ namespace FrontEndApp.Controllers
             
             //Read cookie
             string cookievalue = "";
-            if (Request.Cookies["token"] != null)
+            if (Request.Cookies["access_token"] != null)
             {
-                cookievalue = Request.Cookies["token"].ToString();
+                cookievalue = Request.Cookies["access_token"].ToString();
             }
 
             PartialVM vm = client.GetClient(messageServiceLink, "/MessagesMVC/MyMessages/" + id, cookievalue, "Messaging Service Down");
@@ -50,9 +52,9 @@ namespace FrontEndApp.Controllers
 
             //Read cookie
             string cookievalue = "";
-            if (Request.Cookies["token"] != null)
+            if (Request.Cookies["access_token"] != null)
             {
-                cookievalue = Request.Cookies["token"].ToString();
+                cookievalue = Request.Cookies["access_token"].ToString();
             }
 
             PartialVM vm = client.GetClient(messageServiceLink, "/MessagesMVC/send/" + id, cookievalue, "Messaging Service Down");
@@ -65,7 +67,7 @@ namespace FrontEndApp.Controllers
         {
             using (HttpClient client = new HttpClient())
             {
-                var response = client.PostAsJsonAsync("http://localhost:50143/MessagesMVC/SaveMessage", model).Result;
+                var response = client.PostAsJsonAsync(messageServiceLink + "/MessagesMVC/SaveMessage", model).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     //var conent = response.Content.ReadAsAsync()

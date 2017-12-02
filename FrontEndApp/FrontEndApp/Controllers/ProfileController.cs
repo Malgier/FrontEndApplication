@@ -4,89 +4,87 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
+using FrontEndApp.Models;
+using System.Net.Http;
 
 namespace FrontEndApp.Controllers
 {
+    [Authorize]
     public class ProfileController : Controller
     {
+        private string profileServiceLink;
+
+        public ProfileController(IConfiguration config)
+        {
+            profileServiceLink = config.GetValue<string>("ProfileService");
+        }
+
         // GET: Profile
+        // /User/Index
+        [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            Client client = new Client();
+
+            //Read cookie
+            string cookievalue = "";
+            if (Request.Cookies["access_token"] != null)
+            {
+                cookievalue = Request.Cookies["access_token"].ToString();
+            }
+
+            PartialVM vm = client.GetClient(profileServiceLink, "/User/Index", cookievalue, "User Service Down");
+            return View(vm);
         }
 
-        // GET: Profile/Details/5
-        public ActionResult Details(int id)
+        // GET: User/Profile/5
+        [HttpGet]
+        [Route("User/Profile/{id}")]
+        public ActionResult Profile(int id)
         {
-            return View();
+            Client client = new Client();
+
+            //Read cookie
+            string cookievalue = "";
+            if (Request.Cookies["access_token"] != null)
+            {
+                cookievalue = Request.Cookies["access_token"].ToString();
+            }
+
+            PartialVM vm = client.GetClient(profileServiceLink, "/User/Profile" + id, cookievalue, "User Service Down");
+            return View(vm);
         }
 
-        // GET: Profile/Create
-        public ActionResult Create()
+        // GET: User/Edit/5
+        [HttpGet]
+        public ActionResult EditProfile(int id)
         {
-            return View();
+            Client client = new Client();
+
+            //Read cookie
+            string cookievalue = "";
+            if (Request.Cookies["access_token"] != null)
+            {
+                cookievalue = Request.Cookies["access_token"].ToString();
+            }
+
+            PartialVM vm = client.GetClient(profileServiceLink, "/User/edit" + id, cookievalue, "User Service Down");
+            return View(vm);
         }
 
-        // POST: Profile/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult EditProfilePost(User model)
         {
-            try
+            using (HttpClient client = new HttpClient())
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Profile/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Profile/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Profile/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Profile/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
+                var response = client.PostAsJsonAsync(profileServiceLink + "/User/EditProfilePost", model).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    //var conent = response.Content.ReadAsAsync()
+                }
+                return Ok();
             }
         }
     }
