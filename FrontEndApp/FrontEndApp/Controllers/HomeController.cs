@@ -15,7 +15,15 @@ namespace FrontEndApp.Controllers
         public IActionResult Index()
         {
             Client client = new Client();
-            PartialVM vm = client.GetClient("http://localhost:54330", "/Products/Index", "Products not Found");
+
+            //Read cookie
+            string cookievalue = "";
+            if (Request.Cookies["token"] != null)
+            {
+                cookievalue = Request.Cookies["token"].ToString();
+            }
+
+            PartialVM vm = client.GetClient("http://localhost:54330", "/Products/Index",cookievalue, "Products not Found");
             return View(vm);
         }
 
@@ -23,7 +31,15 @@ namespace FrontEndApp.Controllers
         public IActionResult ProductDetails(string EAN)
         {
             Client client = new Client();
-            PartialVM vm = client.GetClient("http://localhost:54330", "/Products/ProductDetails?EAN=" + EAN, "Product Details Not Found");
+
+            //Read cookie
+            string cookievalue = "";
+            if (Request.Cookies["token"] != null)
+            {
+                cookievalue = Request.Cookies["token"].ToString();
+            }
+
+            PartialVM vm = client.GetClient("http://localhost:54330", "/Products/ProductDetails?EAN=" + EAN, cookievalue, "Product Details Not Found");
             return View(vm);
         }
 

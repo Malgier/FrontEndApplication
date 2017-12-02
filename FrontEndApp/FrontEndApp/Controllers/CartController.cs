@@ -13,7 +13,15 @@ namespace FrontEndApp.Controllers
         public IActionResult Index()
         {
             Client client = new Client();
-            PartialVM vm = client.GetClient("http://localhost:54997", "api/CustomerOrdering/View/Cart", "Cart Service Down");
+            
+            //Read cookie
+            string cookievalue = "";
+            if (Request.Cookies["token"] != null)
+            {
+                cookievalue = Request.Cookies["token"].ToString();
+            }
+
+            PartialVM vm = client.GetClient("http://localhost:54997", "api/CustomerOrdering/View/Cart", cookievalue, "Cart Service Down");
             return View(vm);
         }
     }

@@ -5,11 +5,12 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
+
 namespace FrontEndApp
 {
     public class Client
     {
-        public PartialVM GetClient(string baseLink, string path, string errorMessage)
+        public PartialVM GetClient(string baseLink, string path, string token, string errorMessage)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -18,6 +19,8 @@ namespace FrontEndApp
                     client.BaseAddress = new Uri(baseLink);
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.ParseAdd("application/json");
+                    if(token != "")
+                        client.DefaultRequestHeaders.Add("Authorization", token);
 
                     HttpResponseMessage response = client.GetAsync(path).Result;
 

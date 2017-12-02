@@ -21,7 +21,15 @@ namespace FrontEndApp.Controllers
         public IActionResult MyMessages(int id)
         {
             Client client = new Client();
-            PartialVM vm = client.GetClient("http://localhost:50143", "/MessagesMVC/MyMessages/" + id, "Messaging Service Down");
+            
+            //Read cookie
+            string cookievalue = "";
+            if (Request.Cookies["token"] != null)
+            {
+                cookievalue = Request.Cookies["token"].ToString();
+            }
+
+            PartialVM vm = client.GetClient("http://localhost:50143", "/MessagesMVC/MyMessages/" + id, cookievalue, "Messaging Service Down");
             return View(vm);
         }
 
@@ -31,7 +39,15 @@ namespace FrontEndApp.Controllers
         public IActionResult Send(int id)
         {
             Client client = new Client();
-            PartialVM vm = client.GetClient("http://localhost:50143", "/MessagesMVC/send/" + id, "Messaging Service Down");
+
+            //Read cookie
+            string cookievalue = "";
+            if (Request.Cookies["token"] != null)
+            {
+                cookievalue = Request.Cookies["token"].ToString();
+            }
+
+            PartialVM vm = client.GetClient("http://localhost:50143", "/MessagesMVC/send/" + id, cookievalue, "Messaging Service Down");
             return View(vm);
         }
 
@@ -55,7 +71,15 @@ namespace FrontEndApp.Controllers
         public IActionResult Details(int id)
         {
             Client client = new Client();
-            PartialVM vm = client.GetClient("http://localhost:50143", "/MessagesMVC/details/" + id, "");
+
+            //Read cookie
+            string cookievalue = "";
+            if (Request.Cookies["token"] != null)
+            {
+                cookievalue = Request.Cookies["token"].ToString();
+            }
+
+            PartialVM vm = client.GetClient("http://localhost:50143", "/MessagesMVC/details/" + id, cookievalue, "");
             return View(vm);
         }
     }

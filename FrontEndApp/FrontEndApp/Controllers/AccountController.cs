@@ -14,15 +14,15 @@ namespace FrontEndApp.Controllers
         public IActionResult Login()
         {
             Client client = new Client();
-            PartialVM vm = client.GetClient("https://localhost:44347/", "/Account/Login", "Login Service Down");
-
+            
             //Read cookie
-            string cookievalue;
+            string cookievalue = "";
             if (Request.Cookies["token"] != null)
             {
                 cookievalue = Request.Cookies["token"].ToString();
             }
 
+            PartialVM vm = client.GetClient("https://localhost:44347/", "/Account/Login", cookievalue, "Login Service Down");
             return View(vm);
         }
 
@@ -45,7 +45,15 @@ namespace FrontEndApp.Controllers
         public IActionResult Register()
         {
             Client client = new Client();
-            PartialVM vm = client.GetClient("https://localhost:44347/", "/Account/Register", "Register Service Down");
+            
+            //Read cookie
+            string cookievalue = "";
+            if (Request.Cookies["token"] != null)
+            {
+                cookievalue = Request.Cookies["token"].ToString();
+            }
+
+            PartialVM vm = client.GetClient("https://localhost:44347/", "/Account/Register", cookievalue, "Register Service Down");
             return View(vm);
         }
 
@@ -58,7 +66,8 @@ namespace FrontEndApp.Controllers
                 var response = client.PostAsJsonAsync("https://localhost:44347/Account/RegisterUser", model).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    //var conent = response.Content.ReadAsAsync()
+                    var content = response.Content.ReadAsAsync<TokenResponse>().Result;
+                    Response.Cookies.Append("token", content.AccessToken);
                 }
                 return Ok();
             }
