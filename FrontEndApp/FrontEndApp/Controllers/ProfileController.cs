@@ -53,7 +53,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["access_token"].ToString();
             }
 
-            PartialVM vm = client.GetClient(profileServiceLink, "/User/Profile" + id, cookievalue, "User Service Down");
+            PartialVM vm = client.GetClient(profileServiceLink, "/User/Profile/" + id, cookievalue, "User Service Down");
             return View(vm);
         }
 
@@ -70,7 +70,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["access_token"].ToString();
             }
 
-            PartialVM vm = client.GetClient(profileServiceLink, "/User/edit" + id, cookievalue, "User Service Down");
+            PartialVM vm = client.GetClient(profileServiceLink, "/User/edit/" + id, cookievalue, "User Service Down");
             return View(vm);
         }
 
@@ -82,9 +82,12 @@ namespace FrontEndApp.Controllers
                 var response = client.PostAsJsonAsync(profileServiceLink + "/User/EditProfilePost", model).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    //var conent = response.Content.ReadAsAsync()
+                    return Ok();
                 }
-                return Ok();
+                else
+                {
+                    return NotFound();
+                }
             }
         }
     }

@@ -41,12 +41,16 @@ namespace FrontEndApp.Controllers
             using (HttpClient client = new HttpClient())
             {
                 var response = client.PostAsJsonAsync(accountServiceLink + "/Account/LoginReturn", model).Result;
-                if(response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
                 {
                     var content = response.Content.ReadAsAsync<TokenResponse>().Result;
                     Response.Cookies.Append("access_token", content.AccessToken);
+                    return Ok();
                 }
-                return Ok();
+                else
+                {
+                    return NotFound();
+                }
             }
         }
 
@@ -76,8 +80,12 @@ namespace FrontEndApp.Controllers
                 {
                     var content = response.Content.ReadAsAsync<TokenResponse>().Result;
                     Response.Cookies.Append("token", content.AccessToken);
+                    return Ok();
                 }
-                return Ok();
+                else
+                {
+                    return NotFound();
+                }
             }
         }
     }

@@ -70,9 +70,12 @@ namespace FrontEndApp.Controllers
                 var response = client.PostAsJsonAsync(messageServiceLink + "/MessagesMVC/SaveMessage", model).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    //var conent = response.Content.ReadAsAsync()
+                    return Ok();
                 }
-                return Ok();
+                else
+                {
+                    return NotFound();
+                }
             }
         }
 
