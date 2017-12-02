@@ -20,7 +20,7 @@ namespace FrontEndApp
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.ParseAdd("application/json");
                     if(token != "")
-                        client.DefaultRequestHeaders.Add("Authorization", token);
+                        client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
 
                     HttpResponseMessage response = client.GetAsync(path).Result;
 
