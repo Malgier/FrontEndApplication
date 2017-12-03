@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace FrontEndApp.Controllers
 {
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize]
     [Route("User")]
     public class ProfileController : Controller
     {
@@ -44,7 +44,7 @@ namespace FrontEndApp.Controllers
 
         // GET: User/Profile/5
         [HttpGet]
-        [Route("Profile/{id}")]
+        [Route("User/Profile/{id}")]
         public ActionResult Profile(int id)
         {
             Client client = new Client();
@@ -56,24 +56,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["access_token"].ToString();
             }
 
-            PartialVM vm = client.GetClient(profileServiceLink, "/User/Profile/" + id, cookievalue, "User Service Down");
-            return View(vm);
-        }
-
-        // GET: User/Edit/5
-        [HttpGet]
-        public ActionResult EditProfile(int id)
-        {
-            Client client = new Client();
-
-            //Read cookie
-            string cookievalue = "";
-            if (Request.Cookies["access_token"] != null)
-            {
-                cookievalue = Request.Cookies["access_token"].ToString();
-            }
-
-            PartialVM vm = client.GetClient(profileServiceLink, "/User/edit/" + id, cookievalue, "User Service Down");
+            PartialVM vm = client.GetClient(profileServiceLink, "/User/Profile" + id, cookievalue, "User Service Down");
             return View(vm);
         }
 

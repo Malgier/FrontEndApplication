@@ -50,20 +50,20 @@
                     <li><a asp-area="" asp-controller="Cart" asp-action="Index">Cart</a></li>
                 </ul>
                 @{                 
-//if (User.FindFirst(System.Security.Claims.ClaimTypes.Role).Value == "User")
-//{
+                    if (ViewContext.HttpContext.User.IsInRole("User"))
+                    {
                         <ul class="nav navbar-nav navbar-right">
                             <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
                             <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
                         </ul>
-                    @*}
+                    }
                     else
                     {
                         <ul class="nav navbar-nav navbar-right">
-                            <li>Welcome @User.FindFirst(System.Security.Claims.ClaimTypes.Name).Value</li>
+                            <li>@*Welcome @User.FindFirst(System.Security.Claims.ClaimTypes.Name).Value*@</li>
                             <li><a asp-area="" asp-controller="Account" asp-action="Login">Log Out</a></li>
                         </ul>
-                    }*@
+                    }
                 }
             </div>
         </div>

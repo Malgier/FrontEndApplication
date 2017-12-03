@@ -20,7 +20,11 @@ namespace FrontEndApp
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            Configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .AddJsonFile(String.Format("appsettings.{0}.json", Environment.GetEnvironmentVariable("AppSettings")), optional: true)
+                .Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -31,28 +35,27 @@ namespace FrontEndApp
             services.AddMvc();
             services.AddSingleton(Configuration);
 
-            services.AddAuthentication(o =>
+            var tokenValidationParameters = new TokenValidationParameters
             {
-                o.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                o.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                o.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            }).AddCookie(options =>
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MY TOP SECRET TEST KEY")),
+                ValidateIssuer = true,
+                ValidIssuer = "issuer",
+                ValidateAudience = true,
+                ValidAudience = "audience",
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero
+            };
+
+            services.AddAuthentication(options =>
             {
-                options.AccessDeniedPath = new PathString("/Account/Login/");
-                options.LoginPath = new PathString("/Account/Login/");
-                options.Cookie.Name = "access_token";
-            }).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options => {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MY TOP SECRET TEST KEY")),
-                    ValidateIssuer = true,
-                    ValidIssuer = "issuer",
-                    ValidateAudience = true,
-                    ValidAudience = "audience",
-                    ValidateLifetime = true,
-                    ClockSkew = TimeSpan.Zero
-                };
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(o =>
+            {
+                o.TokenValidationParameters = tokenValidationParameters;
+                o.RequireHttpsMetadata = false;
             });
         }
 
@@ -93,11 +96,9 @@ namespace FrontEndApp
             }
 
             app.UseStaticFiles();
-
+            app.UseMiddleware<JWTCookieToHeader>();
             app.UseCookiePolicy();
-
             app.UseAuthentication();
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

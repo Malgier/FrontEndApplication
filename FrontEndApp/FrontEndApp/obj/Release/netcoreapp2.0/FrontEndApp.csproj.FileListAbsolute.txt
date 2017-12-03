@@ -1,0 +1,11 @@
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Release\netcoreapp2.0\FrontEndApp.deps.json
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Release\netcoreapp2.0\FrontEndApp.runtimeconfig.json
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Release\netcoreapp2.0\FrontEndApp.runtimeconfig.dev.json
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Release\netcoreapp2.0\FrontEndApp.dll
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Release\netcoreapp2.0\FrontEndApp.pdb
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Release\netcoreapp2.0\FrontEndApp.csprojResolveAssemblyReference.cache
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Release\netcoreapp2.0\FrontEndApp.csproj.CoreCompileInputs.cache
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Release\netcoreapp2.0\FrontEndApp.AssemblyInfoInputs.cache
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Release\netcoreapp2.0\FrontEndApp.AssemblyInfo.cs
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Release\netcoreapp2.0\FrontEndApp.dll
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Release\netcoreapp2.0\FrontEndApp.pdb

@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  frontendapp:
+    image: frontendapp
+    build:
+      context: ./FrontEndApp
+      dockerfile: Dockerfile
