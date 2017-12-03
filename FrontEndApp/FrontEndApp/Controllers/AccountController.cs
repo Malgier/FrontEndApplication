@@ -45,7 +45,7 @@ namespace FrontEndApp.Controllers
                 {
                     var content = response.Content.ReadAsAsync<TokenResponse>().Result;
                     Response.Cookies.Append("access_token", content.AccessToken);
-                    return Ok();
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -80,7 +80,7 @@ namespace FrontEndApp.Controllers
                 {
                     var content = response.Content.ReadAsAsync<TokenResponse>().Result;
                     Response.Cookies.Append("token", content.AccessToken);
-                    return Ok();
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {

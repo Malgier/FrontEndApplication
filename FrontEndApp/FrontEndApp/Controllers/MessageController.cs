@@ -70,7 +70,7 @@ namespace FrontEndApp.Controllers
                 var response = client.PostAsJsonAsync(messageServiceLink + "/MessagesMVC/SaveMessage", model).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    return Ok();
+                    return RedirectToAction("Index", "Profile");
                 }
                 else
                 {

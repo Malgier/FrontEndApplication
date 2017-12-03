@@ -8,10 +8,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authorization;
 using FrontEndApp.Models;
 using System.Net.Http;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace FrontEndApp.Controllers
 {
-    [Authorize]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Route("User")]
     public class ProfileController : Controller
     {
         private string profileServiceLink;
@@ -24,6 +26,7 @@ namespace FrontEndApp.Controllers
         // GET: Profile
         // /User/Index
         [HttpGet]
+        [Route("Index")]
         public ActionResult Index()
         {
             Client client = new Client();
@@ -41,7 +44,7 @@ namespace FrontEndApp.Controllers
 
         // GET: User/Profile/5
         [HttpGet]
-        [Route("User/Profile/{id}")]
+        [Route("Profile/{id}")]
         public ActionResult Profile(int id)
         {
             Client client = new Client();
@@ -82,7 +85,7 @@ namespace FrontEndApp.Controllers
                 var response = client.PostAsJsonAsync(profileServiceLink + "/User/EditProfilePost", model).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    return Ok();
+                    return RedirectToAction("Index");
                 }
                 else
                 {
