@@ -8,10 +8,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authorization;
 using FrontEndApp.Models;
 using System.Net.Http;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace FrontEndApp.Controllers
 {
-    [Authorize]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Route("User")]
     public class ProfileController : Controller
     {
         private string profileServiceLink;
@@ -24,6 +26,7 @@ namespace FrontEndApp.Controllers
         // GET: Profile
         // /User/Index
         [HttpGet]
+        [Route("Index")]
         public ActionResult Index()
         {
             Client client = new Client();
