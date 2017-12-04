@@ -78,6 +78,23 @@ namespace FrontEndApp.Controllers
                 var response = client.PostAsJsonAsync(accountServiceLink + "/Account/RegisterUser", model).Result;
                 if (response.IsSuccessStatusCode)
                 {
+                    return RedirectToAction("Login", "Account");
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+        }
+
+        // Doesnt work
+        public IActionResult Logout()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var response = client.PostAsync(accountServiceLink + "/Account/Logout", null).Result;
+                if (response.IsSuccessStatusCode)
+                {
                     var content = response.Content.ReadAsAsync<TokenResponse>().Result;
                     Response.Cookies.Append("token", content.AccessToken);
                     return RedirectToAction("Index", "Home");

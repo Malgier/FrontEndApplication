@@ -28,7 +28,7 @@ namespace FrontEndApp.Controllers
 
         [HttpGet]
         [Route("MyMessages/{id}")]
-        public IActionResult MyMessages(int id)
+        public IActionResult MyMessages(string id)
         {
             Client client = new Client();
             
@@ -46,7 +46,7 @@ namespace FrontEndApp.Controllers
         [HttpGet]
         [Route("Send/{id}")]
         // GET: Messages/Send/1
-        public IActionResult Send(int id)
+        public IActionResult Send(string id)
         {
             Client client = new Client();
 

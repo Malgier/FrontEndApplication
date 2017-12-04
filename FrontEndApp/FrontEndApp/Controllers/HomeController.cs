@@ -31,7 +31,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["access_token"].ToString();
             }
 
-            PartialVM vm = client.GetClient(productServiceLink, "/Products/Index",cookievalue, "Products not Found");
+            PartialVM vm = client.GetClient(productServiceLink, "api/Product/Views/Index", cookievalue, "Products not Found");
             return View(vm);
         }
 
@@ -47,7 +47,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["access_token"].ToString();
             }
 
-            PartialVM vm = client.GetClient(productServiceLink, "/Products/ProductDetails?EAN=" + EAN, cookievalue, "Product Details Not Found");
+            PartialVM vm = client.GetClient(productServiceLink, "api/Product/Views/ProductDetails?EAN=" + EAN, cookievalue, "Product Details Not Found");
             return View(vm);
         }
 

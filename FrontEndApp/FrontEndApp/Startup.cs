@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 
 namespace FrontEndApp
 {
@@ -23,6 +24,7 @@ namespace FrontEndApp
             Configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
+                .AddJsonFile(String.Format("appsettings.{0}.json", Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")), optional: true)
                 .AddJsonFile(String.Format("appsettings.{0}.json", Environment.GetEnvironmentVariable("AppSettings")), optional: true)
                 .Build();
         }

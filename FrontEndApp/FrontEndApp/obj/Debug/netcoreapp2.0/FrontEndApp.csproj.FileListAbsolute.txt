@@ -53,3 +53,14 @@ C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\bin\D
 C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.runtimeconfig.dev.json
 C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.dll
 C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.pdb
+C:\Users\p4068830\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.deps.json
+C:\Users\p4068830\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.runtimeconfig.json
+C:\Users\p4068830\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.runtimeconfig.dev.json
+C:\Users\p4068830\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.dll
+C:\Users\p4068830\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.pdb
+C:\Users\p4068830\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.csprojResolveAssemblyReference.cache
+C:\Users\p4068830\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.csproj.CoreCompileInputs.cache
+C:\Users\p4068830\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.AssemblyInfoInputs.cache
+C:\Users\p4068830\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.AssemblyInfo.cs
+C:\Users\p4068830\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.dll
+C:\Users\p4068830\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.pdb
