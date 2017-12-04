@@ -1,0 +1,11 @@
+services:
+  frontendapp:
+    build:
+      context: C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: frontendapp
+    ports:
+    - 80/tcp
+version: '3.0'
