@@ -20,6 +20,7 @@ namespace FrontEndApp.Controllers
             cartServiceLink = config.GetValue<string>("CartService");
         }
 
+        [Route("Cart/Index")]
         public IActionResult Index()
         {
             Client client = new Client();

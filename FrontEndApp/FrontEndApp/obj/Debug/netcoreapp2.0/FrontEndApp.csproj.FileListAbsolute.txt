@@ -64,3 +64,14 @@ C:\Users\p4068830\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\o
 C:\Users\p4068830\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.AssemblyInfo.cs
 C:\Users\p4068830\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.dll
 C:\Users\p4068830\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.pdb
+U:\University_3\Software Architecture\New folder\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.deps.json
+U:\University_3\Software Architecture\New folder\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.runtimeconfig.json
+U:\University_3\Software Architecture\New folder\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.runtimeconfig.dev.json
+U:\University_3\Software Architecture\New folder\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.dll
+U:\University_3\Software Architecture\New folder\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.pdb
+U:\University_3\Software Architecture\New folder\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.csprojResolveAssemblyReference.cache
+U:\University_3\Software Architecture\New folder\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.csproj.CoreCompileInputs.cache
+U:\University_3\Software Architecture\New folder\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.AssemblyInfoInputs.cache
+U:\University_3\Software Architecture\New folder\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.AssemblyInfo.cs
+U:\University_3\Software Architecture\New folder\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.dll
+U:\University_3\Software Architecture\New folder\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.pdb

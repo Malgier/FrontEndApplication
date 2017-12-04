@@ -45,25 +45,26 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li onmouseover="displayProfile()"><a asp-area="" asp-controller="Profile" asp-action="Index">Profile</a></li>
-                    @*<li><a asp-area="" asp-controller="Cart" asp-action="Index" class="fa fa-shopping-cart"><span class="badge"></span></a></li>*@
+                    <li onmouseover="displayProfile()"><a asp-area="" asp-controller="Profile" asp-action="Index">Users</a></li>
+                    @if (User.IsInRole("Staff") || User.IsInRole("Admin"))
+                    {
+                        <li onmouseover="displayProfile()"><a asp-area="" asp-controller="Profile" asp-action="Profile" asp-route-id="@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value">Profile</a></li>
+                    }
                     <li><a asp-area="" asp-controller="Cart" asp-action="Index">Cart</a></li>
                 </ul>
-                @{                 
-                    if (!ViewContext.HttpContext.User.IsInRole("User"))
-                    {
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
-                            <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
-                        </ul>
-                    }
-                    else
-                    {
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>@*Welcome @User.FindFirst(System.Security.Claims.ClaimTypes.Name).Value*@</li>
-                            <li><a asp-area="" asp-controller="Account" asp-action="Logout">Log Out</a></li>
-                        </ul>
-                    }
+                @if (!User.IsInRole("User") && !User.IsInRole("Customer") && !User.IsInRole("Staff") && !User.IsInRole("Admin"))
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li style="color: white">Welcome @User.FindFirst(System.Security.Claims.ClaimTypes.Name).Value</li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Logout">Log Out</a></li>
+                    </ul>
                 }
             </div>
         </div>
