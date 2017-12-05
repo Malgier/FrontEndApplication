@@ -4,5 +4,5 @@ WORKDIR /app
 EXPOSE 80
 COPY ${source:-obj/Docker/publish} .
 ENTRYPOINT ["dotnet", "FrontEndApp.dll"]
-ENV AppSettings deployment
+ENV AppSettings Deployment
 ENV ASPNETCORE_ENVIRONMENT Production
