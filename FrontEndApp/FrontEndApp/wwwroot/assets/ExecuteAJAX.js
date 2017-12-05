@@ -1,17 +1,17 @@
-﻿function Execute(url, type) {
+﻿function getToken() {
+    var value = "; " + document.cookie;
+    var parts = value.split("; access_token=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+}
 
-    if (
-        url != undefined
-        && url != null
-        && type != undefined
-        && type != null
-    )
+function Execute(url, type) {
+    if (url && type)
         $.ajax({
             url: url,
             type: type,
-            done: function () { },
-            fail: function () { },
-            always: function () { },
+            headers: {
+                "Authorization": "Bearer " + getToken()
+            },
             contentType: "application/json"
         });
 };

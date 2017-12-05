@@ -2,7 +2,7 @@ version: '3'
 
 services:
   frontendapp:
-    image: frontendapp
+    image: thamco
     build:
       context: ./FrontEndApp
       dockerfile: Dockerfile
