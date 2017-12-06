@@ -4,7 +4,7 @@
     if (parts.length == 2) return parts.pop().split(";").shift();
 }
 
-function Execute(url, type) {
+function Execute(url, type, redirect) {
     if (url && type)
         $.ajax({
             url: url,
@@ -12,6 +12,7 @@ function Execute(url, type) {
             headers: {
                 "Authorization": "Bearer " + getToken()
             },
-            contentType: "application/json"
+            contentType: "application/json",
+            success: function () { if (redirect) { window.location.href = redirect } }
         });
 };

@@ -13,10 +13,12 @@ namespace FrontEndApp.Controllers
     [Authorize]
     public class CartController : Controller
     {
+        HttpMessageHandler _handler;
         private string cartServiceLink;
 
-        public CartController(IConfiguration config)
+        public CartController(IConfiguration config, HttpMessageHandler handler = null)
         {
+            _handler = handler == null ? new HttpClientHandler() : handler;
             cartServiceLink = config.GetValue<string>("CartService");
         }
 
@@ -32,7 +34,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["access_token"].ToString();
             }
 
-            PartialVM vm = client.GetClient(cartServiceLink, "api/CustomerOrdering/View/Cart", cookievalue, "Cart Service Down");
+            PartialVM vm = client.GetClient(cartServiceLink, "api/CustomerOrdering/View/Cart", cookievalue, "Cart Service Down", _handler);
             return View(vm);
         }
     }

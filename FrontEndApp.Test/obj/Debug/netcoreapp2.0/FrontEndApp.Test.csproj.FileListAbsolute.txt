@@ -1,0 +1,16 @@
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp.Test\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp.Test\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp.Test\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp.Test\bin\Debug\netcoreapp2.0\FrontEndApp.Test.deps.json
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp.Test\bin\Debug\netcoreapp2.0\FrontEndApp.Test.runtimeconfig.json
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp.Test\bin\Debug\netcoreapp2.0\FrontEndApp.Test.runtimeconfig.dev.json
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp.Test\bin\Debug\netcoreapp2.0\FrontEndApp.Test.dll
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp.Test\bin\Debug\netcoreapp2.0\FrontEndApp.Test.pdb
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp.Test\bin\Debug\netcoreapp2.0\FrontEndApp.dll
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp.Test\bin\Debug\netcoreapp2.0\FrontEndApp.pdb
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp.Test\obj\Debug\netcoreapp2.0\FrontEndApp.Test.csprojResolveAssemblyReference.cache
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp.Test\obj\Debug\netcoreapp2.0\FrontEndApp.Test.csproj.CoreCompileInputs.cache
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp.Test\obj\Debug\netcoreapp2.0\FrontEndApp.Test.AssemblyInfoInputs.cache
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp.Test\obj\Debug\netcoreapp2.0\FrontEndApp.Test.AssemblyInfo.cs
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp.Test\obj\Debug\netcoreapp2.0\FrontEndApp.Test.dll
+C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp.Test\obj\Debug\netcoreapp2.0\FrontEndApp.Test.pdb

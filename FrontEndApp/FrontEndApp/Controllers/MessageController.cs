@@ -14,10 +14,12 @@ namespace FrontEndApp.Controllers
     [Route("[controller]")]
     public class MessageController : Controller
     {
+        HttpMessageHandler _handler;
         private string messageServiceLink;
 
-        public MessageController(IConfiguration config)
+        public MessageController(IConfiguration config, HttpMessageHandler handler = null)
         {
+            _handler = handler == null ? new HttpClientHandler() : handler;
             messageServiceLink = config.GetValue<string>("MessageService");
         }
 
@@ -39,7 +41,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["access_token"].ToString();
             }
 
-            PartialVM vm = client.GetClient(messageServiceLink, "/MessagesMVC/MyMessages/" + id, cookievalue, "Messaging Service Down");
+            PartialVM vm = client.GetClient(messageServiceLink, "/MessagesMVC/MyMessages/" + id, cookievalue, "Messaging Service Down", _handler);
             return View(vm);
         }
 
@@ -57,7 +59,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["access_token"].ToString();
             }
 
-            PartialVM vm = client.GetClient(messageServiceLink, "/MessagesMVC/send/" + id, cookievalue, "Messaging Service Down");
+            PartialVM vm = client.GetClient(messageServiceLink, "/MessagesMVC/send/" + id, cookievalue, "Messaging Service Down", _handler);
             return View(vm);
         }
 
@@ -65,7 +67,7 @@ namespace FrontEndApp.Controllers
         [Route("SaveMessage")]
         public IActionResult SaveMessage(MessageVM model)
         {
-            using (HttpClient client = new HttpClient())
+            using (HttpClient client = new HttpClient(_handler, false))
             {
                 var response = client.PostAsJsonAsync(messageServiceLink + "/MessagesMVC/SaveMessage", model).Result;
                 if (response.IsSuccessStatusCode)
@@ -92,7 +94,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["token"].ToString();
             }
 
-            PartialVM vm = client.GetClient(messageServiceLink, "/MessagesMVC/details/" + id, cookievalue, "");
+            PartialVM vm = client.GetClient(messageServiceLink, "/MessagesMVC/details/" + id, cookievalue, "", _handler);
             return View(vm);
         }
     }

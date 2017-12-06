@@ -11,10 +11,12 @@ namespace FrontEndApp.Controllers
 {
     public class AccountController : Controller
     {
+        HttpMessageHandler _handler;
         private string accountServiceLink;
 
-        public AccountController(IConfiguration config)
+        public AccountController(IConfiguration config, HttpMessageHandler handler = null)
         {
+            _handler = handler == null ? new HttpClientHandler() : handler;
             accountServiceLink = config.GetValue<string>("AuthService");
         }
 
@@ -30,7 +32,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["access_token"].ToString();
             }
             
-            PartialVM vm = client.GetClient(accountServiceLink, "/Account/Login", cookievalue, "Login Service Down");
+            PartialVM vm = client.GetClient(accountServiceLink, "/Account/Login", cookievalue, "Login Service Down", _handler);
             return View(vm);
         }
 
@@ -38,7 +40,7 @@ namespace FrontEndApp.Controllers
         [Route("Account/LoginReturn")]
         public IActionResult LoginReturn(LoginViewModel model)
         {
-            using (HttpClient client = new HttpClient())
+            using (HttpClient client = new HttpClient(_handler, false))
             {
                 var response = client.PostAsJsonAsync(accountServiceLink + "/Account/LoginReturn", model).Result;
                 if (response.IsSuccessStatusCode)
@@ -65,7 +67,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["access_token"].ToString();
             }
 
-            PartialVM vm = client.GetClient(accountServiceLink, "/Account/Register", cookievalue, "Register Service Down");
+            PartialVM vm = client.GetClient(accountServiceLink, "/Account/Register", cookievalue, "Register Service Down", _handler);
             return View(vm);
         }
 
@@ -73,7 +75,7 @@ namespace FrontEndApp.Controllers
         [Route("Account/RegisterUser")]
         public IActionResult RegisterUser(RegisterViewModel model)
         {
-            using (HttpClient client = new HttpClient())
+            using (HttpClient client = new HttpClient(_handler, false))
             {
                 var response = client.PostAsJsonAsync(accountServiceLink + "/Account/RegisterUser", model).Result;
                 if (response.IsSuccessStatusCode)
@@ -90,7 +92,7 @@ namespace FrontEndApp.Controllers
         // Doesnt work
         public IActionResult Logout()
         {
-            using (HttpClient client = new HttpClient())
+            using (HttpClient client = new HttpClient(_handler, false))
             {
                 var response = client.PostAsync(accountServiceLink + "/Account/Logout", null).Result;
                 if (response.IsSuccessStatusCode)

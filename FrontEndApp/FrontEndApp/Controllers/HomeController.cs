@@ -13,10 +13,12 @@ namespace FrontEndApp.Controllers
 {
     public class HomeController : Controller
     {
+        HttpMessageHandler _handler;
         private string productServiceLink;
 
-        public HomeController(IConfiguration config)
+        public HomeController(IConfiguration config, HttpMessageHandler handler = null)
         {
+            _handler = handler == null ? new HttpClientHandler() : handler;
             productServiceLink = config.GetValue<string>("ProductService");
         }
 
@@ -32,7 +34,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["access_token"].ToString();
             }
 
-            PartialVM vm = client.GetClient(productServiceLink, "api/Product/Views/Index", cookievalue, "Products not Found");
+            PartialVM vm = client.GetClient(productServiceLink, "api/Product/Views/Index", cookievalue, "Products not Found", _handler);
             return View(vm);
         }
 
@@ -48,7 +50,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["access_token"].ToString();
             }
 
-            PartialVM vm = client.GetClient(productServiceLink, "api/Product/Views/ProductDetails?EAN=" + EAN, cookievalue, "Product Details Not Found");
+            PartialVM vm = client.GetClient(productServiceLink, "api/Product/Views/ProductDetails?EAN=" + EAN, cookievalue, "Product Details Not Found", _handler);
             return View(vm);
         }
 

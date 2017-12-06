@@ -10,9 +10,18 @@ namespace FrontEndApp
 {
     public class Client
     {
-        public PartialVM GetClient(string baseLink, string path, string token, string errorMessage)
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="baseLink">Base URL</param>
+        /// <param name="path">Sub path of URL</param>
+        /// <param name="token">token being passed by services</param>
+        /// <param name="errorMessage">error message to display if current service is down</param>
+        /// <param name="handler">handler used only for testing purposes</param>
+        /// <returns></returns>
+        public PartialVM GetClient(string baseLink, string path, string token, string errorMessage, HttpMessageHandler handler)
         {
-            using (HttpClient client = new HttpClient())
+            using (HttpClient client = new HttpClient(handler, false))
             {
                 try
                 {

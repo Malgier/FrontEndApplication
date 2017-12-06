@@ -1,18 +1,8 @@
 ﻿<!DOCTYPE html>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-
-<script>
-
-    $(function () {
-        $("#ddlProfile").hide();
-    })
-
-    function displayProfile() {
-        console.log("ola")
-    }
-
-</script>
+<script type="text/javascript" src="~/assets/ExecuteAJAX.js"></script>
+<script type="text/javascript" src="~/lib/jQuery/dist/jquery.js"></script>
 
 <html>
 <head>
@@ -45,10 +35,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li onmouseover="displayProfile()"><a asp-area="" asp-controller="Profile" asp-action="Index">Users</a></li>
                     @if (User.IsInRole("Staff") || User.IsInRole("Admin"))
                     {
-                        <li onmouseover="displayProfile()"><a asp-area="" asp-controller="Profile" asp-action="Profile" asp-route-id="@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value">Profile</a></li>
+                        <li><a asp-area="" asp-controller="Profile" asp-action="Index">Users</a></li>
                     }
                     <li><a asp-area="" asp-controller="Cart" asp-action="Index">Cart</a></li>
                 </ul>
@@ -63,17 +52,12 @@
                 {
                     <ul class="nav navbar-nav navbar-right">
                         <li style="color: white">Welcome @User.FindFirst(System.Security.Claims.ClaimTypes.Name).Value</li>
+                        <li><a asp-area="" asp-controller="Profile" asp-action="Profile" asp-route-id="@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value">Profile</a></li>
                         <li><a asp-area="" asp-controller="Account" asp-action="Logout">Log Out</a></li>
                     </ul>
                 }
             </div>
         </div>
-        <ul id="ddlProfile">
-            <li><a asp-area="" asp-controller="Home" asp-action="Index">Edit Profile</a></li>
-            <li><a asp-area="" asp-controller="Home" asp-action="Index">Order History</a></li>
-            <li><a asp-area="" asp-controller="Home" asp-action="Index">Messages</a></li>
-            <li><a asp-area="" asp-controller="Home" asp-action="Index">View Customers</a></li>
-        </ul>
     </nav>
     <div class="container body-content">
         @RenderBody()
