@@ -40,7 +40,7 @@ namespace FrontEndApp.Controllers
             }
 
             PartialVM vm = client.GetClient(profileServiceLink, "/User/Index", cookievalue, "User Service Down", _handler);
-            return View(vm);
+            return View("Shared/Simple", vm);
         }
 
         // GET: User/Profile/5
@@ -58,7 +58,7 @@ namespace FrontEndApp.Controllers
             }
 
             PartialVM vm = client.GetClient(profileServiceLink, "/User/Profile/" + id, cookievalue, "User Service Down", _handler);
-            return View(vm);
+            return View("Shared/Simple", vm);
         }
 
         // GET: User/Edit/5
@@ -76,7 +76,7 @@ namespace FrontEndApp.Controllers
             }
 
             PartialVM vm = client.GetClient(profileServiceLink, "/User/Edit/" + id, cookievalue, "User Service Down", _handler);
-            return View(vm);
+            return View("Shared/Simple", vm);
         }
 
         [HttpPost]

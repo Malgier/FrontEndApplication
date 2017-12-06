@@ -55,7 +55,7 @@ namespace FrontEndApp.Controllers
         }
 
         [Route("Order/{orderId}")]
-        public IActionResult Order(int orderId)
+        public IActionResult OrderCart(int orderId)
         {
             Client client = new Client();
 
@@ -67,6 +67,40 @@ namespace FrontEndApp.Controllers
             }
 
             PartialVM vm = client.GetClient(cartServiceLink, "api/CustomerOrdering/View/Order/" + orderId, cookievalue, "Order Service Down", _handler);
+            return View("Shared/Simple", vm);
+        }
+
+        [Route("OrderCart")]
+        public IActionResult ResumeOrder()
+        {
+            Client client = new Client();
+
+            //Read cookie
+            string cookievalue = "";
+            if (Request.Cookies["access_token"] != null)
+            {
+                cookievalue = Request.Cookies["access_token"].ToString();
+            }
+
+            string vm = client.GetClient(cartServiceLink, "api/CustomerOrdering/View/OrderCart", cookievalue, "Order Service Down", _handler).PartialView;
+
+            return View("Shared/Simple", vm);
+        }
+
+        [Route("ResumeOrder/{orderId}")]
+        public IActionResult ResumeOrder(int orderId)
+        {
+            Client client = new Client();
+
+            //Read cookie
+            string cookievalue = "";
+            if (Request.Cookies["access_token"] != null)
+            {
+                cookievalue = Request.Cookies["access_token"].ToString();
+            }
+
+            string vm = client.GetClient(cartServiceLink, "api/CustomerOrdering/View/ResumeOrder", cookievalue, "Order Service Down", _handler).PartialView;
+
             return View("Shared/Simple", vm);
         }
     }

@@ -8092,7 +8092,7 @@
       ]
     },
     "Remotion.Linq/2.1.1": {
-      "sha512": "pZszQMBWYt2Jp8NUBHRRtvV+O4Hsc/wBu+ImHqlcuHFgT2bJKSx2tg8tWZzx44DuDh77K6iUx2auiOxO43dCYw==",
+      "sha512": "IJn0BqkvwEDpP+2qjvci7n4/a9f7DhKESLWb2/uG4xQh3rTkGTBUz69bI4IivCoKkTFAqjXxYDZw2K/npohjsw==",
       "type": "package",
       "path": "remotion.linq/2.1.1",
       "files": [
@@ -10259,7 +10259,7 @@
       ]
     },
     "System.Linq.Queryable/4.0.1": {
-      "sha512": "qwrS3Ea9Rwk+DRy98DkknD4ZjIUxcIGkyyHtmWhsNvA9uqfaZDGWccHBKphwaiJSZzU55MYHS5r9DgCbcXInBw==",
+      "sha512": "Yn/WfYe9RoRfmSLvUt2JerP0BTGGykCZkQPgojaxgzF2N0oPo+/AhB8TXOpdCcNlrG3VRtsamtK2uzsp3cqRVw==",
       "type": "package",
       "path": "system.linq.queryable/4.0.1",
       "files": [
@@ -13200,7 +13200,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jason\\.nuget\\packages\\": {},
+    "C:\\Users\\Will\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -13209,17 +13209,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jason\\Source\\Repos\\FrontEndApplication\\FrontEndApp\\FrontEndApp\\FrontEndApp.csproj",
+      "projectUniqueName": "C:\\Users\\Will\\Documents\\GitHub\\FrontEndApplication\\FrontEndApp\\FrontEndApp\\FrontEndApp.csproj",
       "projectName": "FrontEndApp",
-      "projectPath": "C:\\Users\\Jason\\Source\\Repos\\FrontEndApplication\\FrontEndApp\\FrontEndApp\\FrontEndApp.csproj",
-      "packagesPath": "C:\\Users\\Jason\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jason\\Source\\Repos\\FrontEndApplication\\FrontEndApp\\FrontEndApp\\obj\\",
+      "projectPath": "C:\\Users\\Will\\Documents\\GitHub\\FrontEndApplication\\FrontEndApp\\FrontEndApp\\FrontEndApp.csproj",
+      "packagesPath": "C:\\Users\\Will\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Will\\Documents\\GitHub\\FrontEndApplication\\FrontEndApp\\FrontEndApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Jason\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Will\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

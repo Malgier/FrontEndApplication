@@ -42,7 +42,7 @@ namespace FrontEndApp.Controllers
             }
 
             PartialVM vm = client.GetClient(messageServiceLink, "/MessagesMVC/MyMessages/" + id, cookievalue, "Messaging Service Down", _handler);
-            return View(vm);
+            return View("Shared/Simple", vm);
         }
 
         [HttpGet]
@@ -60,7 +60,7 @@ namespace FrontEndApp.Controllers
             }
 
             PartialVM vm = client.GetClient(messageServiceLink, "/MessagesMVC/send/" + id, cookievalue, "Messaging Service Down", _handler);
-            return View(vm);
+            return View("Shared/Simple", vm);
         }
 
         [HttpPost]
@@ -95,7 +95,7 @@ namespace FrontEndApp.Controllers
             }
 
             PartialVM vm = client.GetClient(messageServiceLink, "/MessagesMVC/details/" + id, cookievalue, "", _handler);
-            return View(vm);
+            return View("Shared/Simple", vm);
         }
     }
 }

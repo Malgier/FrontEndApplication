@@ -121,5 +121,39 @@ namespace FrontEndApp.Controllers
 
             return View("Shared/Partials", vms);
         }
+
+        [Route("StockOrdering/OrderCart")]
+        public IActionResult OrderCart()
+        {
+            Client client = new Client();
+
+            //Read cookie
+            string cookievalue = "";
+            if (Request.Cookies["access_token"] != null)
+            {
+                cookievalue = Request.Cookies["access_token"].ToString();
+            }
+
+            string vm = client.GetClient(staffOrderingServiceLink, "api/StaffOrdering/View/OrderCart", cookievalue, "Stock Ordering Service Down", _handler).PartialView;
+
+            return View("Shared/Simple", vm);
+        }
+
+        [Route("StockOrdering/ResumeOrder/{orderId}")]
+        public IActionResult ResumeOrder(int orderId)
+        {
+            Client client = new Client();
+
+            //Read cookie
+            string cookievalue = "";
+            if (Request.Cookies["access_token"] != null)
+            {
+                cookievalue = Request.Cookies["access_token"].ToString();
+            }
+
+            string vm = client.GetClient(staffOrderingServiceLink, "api/StaffOrdering/View/ResumeOrder", cookievalue, "Stock Ordering Service Down", _handler).PartialView;
+
+            return View("Shared/Simple", vm);
+        }
     }
 }

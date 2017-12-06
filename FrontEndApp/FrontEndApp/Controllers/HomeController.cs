@@ -35,7 +35,7 @@ namespace FrontEndApp.Controllers
             }
 
             PartialVM vm = client.GetClient(productServiceLink, "api/Product/Views/Index", cookievalue, "Products not Found", _handler);
-            return View(vm);
+            return View("Shared/Simple", vm);
         }
 
         [Route("Products/ProductDetails")]
@@ -51,7 +51,7 @@ namespace FrontEndApp.Controllers
             }
 
             PartialVM vm = client.GetClient(productServiceLink, "api/Product/Views/ProductDetails?EAN=" + EAN, cookievalue, "Product Details Not Found", _handler);
-            return View(vm);
+            return View("Shared/Simple", vm);
         }
 
         public IActionResult Contact()
