@@ -22,6 +22,7 @@ namespace FrontEndApp.Test
         HomeController homeController;
         MessageController messageController;
         ProfileController profileController;
+        InvoiceController invoiceController;
 
         static FakeResponseHandler fakeResponseHandler;
 
@@ -189,6 +190,32 @@ namespace FrontEndApp.Test
                      
                  });
             #endregion
+
+            #region Invoice Handler
+            //Invoice for approval
+            fakeResponseHandler.AddFakeResponse(
+                 new Uri("http://localhost:54349/api/Invoice/Views/InvoicesForApproval"),
+                 new HttpResponseMessage(HttpStatusCode.OK)
+                 {
+                     Content = new ObjectContent<String>("Invoice for approval Success", new JsonMediaTypeFormatter())
+                 });
+
+            //Invoice for users
+            fakeResponseHandler.AddFakeResponse(
+                 new Uri("http://localhost:54349/api/Invoice/Views/InvoicesForUsers/1"),
+                 new HttpResponseMessage(HttpStatusCode.OK)
+                 {
+                     Content = new ObjectContent<String>("Invoice for user Success", new JsonMediaTypeFormatter())
+                 });
+
+            //Invoice details
+            fakeResponseHandler.AddFakeResponse(
+                 new Uri("http://localhost:54349/api/Invoice/Views/InvoiceDetails/1"),
+                 new HttpResponseMessage(HttpStatusCode.OK)
+                 {
+                     Content = new ObjectContent<String>("Invoice details Success", new JsonMediaTypeFormatter())
+                 });
+            #endregion
         }
 
         [TestInitialize]
@@ -253,6 +280,16 @@ namespace FrontEndApp.Test
                 }
             };
             profileController.ControllerContext.HttpContext.Request.Headers.Add("Authorization", "Bearer " + new JwtSecurityTokenHandler().WriteToken(token));
+
+            invoiceController = new InvoiceController(config, fakeResponseHandler);
+            invoiceController.ControllerContext = new ControllerContext()
+            {
+                HttpContext = new DefaultHttpContext
+                {
+                    User = testClaims
+                }
+            };
+            invoiceController.ControllerContext.HttpContext.Request.Headers.Add("Authorization", "Bearer " + new JwtSecurityTokenHandler().WriteToken(token));
         }
 
         #region Auth Tests
@@ -422,6 +459,34 @@ namespace FrontEndApp.Test
             var response = (RedirectToActionResult)profileController.EditProfilePost(vm);
             Assert.AreEqual("Profile", response.ControllerName);
         }
+        #endregion
+
+        #region Invoice Tests
+
+        [TestMethod]
+        public void InvoiceForApprovalSuccess()
+        {
+            var response = (ViewResult)invoiceController.InvoicesForApproval();
+            var model = (PartialVM)response.Model;
+            Assert.AreNotEqual("Invoice for approval Success", model.PartialView);
+        }
+
+        [TestMethod]
+        public void InvoiceForUserSuccess()
+        {
+            var response = (ViewResult)invoiceController.InvoicesForUser("1");
+            var model = (PartialVM)response.Model;
+            Assert.AreNotEqual("Invoice for user Success", model.PartialView);
+        }
+
+        [TestMethod]
+        public void InvoiceDetailsSuccess()
+        {
+            var response = (ViewResult)invoiceController.InvoicesDetails("1");
+            var model = (PartialVM)response.Model;
+            Assert.AreNotEqual("Invoice details Success", model.PartialView);
+        }
+
         #endregion
     }
 }
