@@ -1,8 +1,10 @@
-﻿
+﻿.body-content {
+    margin-top: 51px;
+}
+
 #AddToCart:hover {
     cursor: pointer;
 }
-
 
 .preview {
     display: -webkit-box;

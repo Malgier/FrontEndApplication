@@ -6,7 +6,7 @@ services:
       args:
         source: obj/Docker/publish/
     volumes:
-      - C:\Users\Will\vsdbg:/remote_debugger:ro
+      - C:\Users\Jason\vsdbg:/remote_debugger:ro
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"

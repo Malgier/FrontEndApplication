@@ -1,0 +1,11 @@
+services:
+  frontendapp:
+    build:
+      context: C:\Users\Jason\Source\Repos\FrontEndApplication\FrontEndApp\FrontEndApp
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: thamco
+    ports:
+    - 80/tcp
+version: '3.0'

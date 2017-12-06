@@ -35,7 +35,39 @@ namespace FrontEndApp.Controllers
             }
 
             PartialVM vm = client.GetClient(cartServiceLink, "api/CustomerOrdering/View/Cart", cookievalue, "Cart Service Down", _handler);
-            return View(vm);
+            return View("Shared/Simple", vm);
+        }
+
+        [Route("MyOrders")]
+        public IActionResult MyOrders()
+        {
+            Client client = new Client();
+
+            //Read cookie
+            string cookievalue = "";
+            if (Request.Cookies["access_token"] != null)
+            {
+                cookievalue = Request.Cookies["access_token"].ToString();
+            }
+
+            PartialVM vm = client.GetClient(cartServiceLink, "api/CustomerOrdering/View/Orders", cookievalue, "Order Service Down", _handler);
+            return View("Shared/Simple", vm);
+        }
+
+        [Route("Order/{orderId}")]
+        public IActionResult Order(int orderId)
+        {
+            Client client = new Client();
+
+            //Read cookie
+            string cookievalue = "";
+            if (Request.Cookies["access_token"] != null)
+            {
+                cookievalue = Request.Cookies["access_token"].ToString();
+            }
+
+            PartialVM vm = client.GetClient(cartServiceLink, "api/CustomerOrdering/View/Order/" + orderId, cookievalue, "Order Service Down", _handler);
+            return View("Shared/Simple", vm);
         }
     }
 }

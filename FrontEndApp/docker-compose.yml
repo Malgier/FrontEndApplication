@@ -1,8 +1,47 @@
 version: '3'
 
 services:
+  customer-ordering-service:
+    container_name: customer-ordering
+    image: customer-ordering-service
+    links:
+      - products
+
+  staff-ordering-service:
+    container_name: staff-ordering
+    image: staff-ordering-service
+    links:
+      - products
+      - third-party-repo
+
   frontendapp:
     image: thamco
     build:
       context: ./FrontEndApp
       dockerfile: Dockerfile
+    links:
+      - products
+      - auth
+      - customer-ordering-service
+      - staff-ordering-service
+
+  auth:
+    container_name: auth
+    image: auth-service
+
+  products:
+    container_name: products
+    image: product-service
+
+  third-party-repo:
+    container_name: third-party-repo
+    image: third-party-repo
+
+  reverse-proxy:
+    container_name: reverse-proxy
+    image: reverse-proxy
+    ports:
+      - "80:80"
+    depends_on:
+        - customer-ordering-service
+        - staff-ordering-service
