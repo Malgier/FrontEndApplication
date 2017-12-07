@@ -144,7 +144,7 @@ namespace FrontEndApp.Controllers
         {
             using (HttpClient client = new HttpClient(_handler, false))
             {
-                var response = client.PostAsync(accountServiceLink + "/Account/SaveRole?userId= " + userId + "&_SelectedRoleID=" + _SelectedRoleId, null).Result;
+                var response = client.PostAsync(accountServiceLink + "/Account/SaveRole?userId=" + userId + "&_SelectedRoleID=" + _SelectedRoleId, null).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     return RedirectToAction("ViewUserRoles", "Account");
@@ -177,7 +177,7 @@ namespace FrontEndApp.Controllers
         {
             using (HttpClient client = new HttpClient(_handler, false))
             {
-                var response = client.PostAsync(accountServiceLink + "/Account/SavePermission?userId= " + userId + "&_SelectedRoleID=" + _SelectedRoleId, null).Result;
+                var response = client.PostAsync(accountServiceLink + "/Account/SavePermission?userId=" + userId + "&_SelectedRoleID=" + _SelectedRoleId, null).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     return RedirectToAction("ViewUserRoles", "Account");

@@ -50,7 +50,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["access_token"].ToString();
             }
 
-            PartialVM vm = client.GetClient(productServiceLink, "api/Product/Views/ProductDetails?EAN=" + EAN, cookievalue, "Product Details Not Found", _handler);
+            PartialVM vm = client.GetClient(productServiceLink, "api/Product/Views/ProductDetails?EAN=" + EAN, cookievalue, "Product Details not Found", _handler);
             return View(vm);
         }
 

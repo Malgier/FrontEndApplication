@@ -94,7 +94,7 @@ namespace FrontEndApp.Controllers
                 cookievalue = Request.Cookies["token"].ToString();
             }
 
-            PartialVM vm = client.GetClient(messageServiceLink, "/MessagesMVC/details/" + id, cookievalue, "", _handler);
+            PartialVM vm = client.GetClient(messageServiceLink, "/MessagesMVC/details/" + id, cookievalue, "Messaging Service Down", _handler);
             return View(vm);
         }
     }

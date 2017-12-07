@@ -17,7 +17,7 @@ namespace FrontEndApp.Controllers
         public InvoiceController(IConfiguration config, HttpMessageHandler handler = null)
         {
             _handler = handler == null ? new HttpClientHandler() : handler;
-            invoiceServiceLink = config.GetValue<string>("AuthService");
+            invoiceServiceLink = config.GetValue<string>("InvoiceService");
         }
 
         public IActionResult InvoicesForApproval()
