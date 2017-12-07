@@ -32,7 +32,7 @@ namespace FrontEndApp.Controllers
             }
 
             PartialVM vm = client.GetClient(invoiceServiceLink, "/api/Invoice/Views/InvoicesForApproval", cookievalue, "Invoice Service Down", _handler);
-            return View("Shared/Simple", vm);
+            return View(vm);
         }
 
 
@@ -48,7 +48,7 @@ namespace FrontEndApp.Controllers
             }
 
             PartialVM vm = client.GetClient(invoiceServiceLink, "/api/Invoice/Views/InvoicesForUsers/" + id, cookievalue, "Invoice Service Down", _handler);
-            return View("Shared/Simple", vm);
+            return View(vm);
         }
 
 
@@ -64,7 +64,7 @@ namespace FrontEndApp.Controllers
             }
 
             PartialVM vm = client.GetClient(invoiceServiceLink, "/api/Invoice/Views/InvoiceDetails/" + reference, cookievalue, "Invoice Service Down", _handler);
-            return View("Shared/Simple", vm);
+            return View(vm);
         }
     }
 }

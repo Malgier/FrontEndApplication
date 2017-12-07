@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  frontendapp:
+    image: thamco:dev
+    build:
+      args:
+        source: obj/Docker/empty/
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_frontendapp$
+    volumes:
+      - C:\Users\Will\Documents\GitHub\FrontEndApplication\FrontEndApp\FrontEndApp:/app
+      - C:\Users\Will\vsdbg\vs2017u5:/remote_debugger:ro
+#$nuget_volume_mapping_frontendapp$
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_frontendapp$ bin/Debug/netcoreapp2.0/FrontEndApp.dll"
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/bash -c \"if PID=$$(pidof -x dotnet); then kill $$PID; fi\""

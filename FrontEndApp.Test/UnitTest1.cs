@@ -23,6 +23,9 @@ namespace FrontEndApp.Test
         MessageController messageController;
         ProfileController profileController;
         InvoiceController invoiceController;
+        StaffOrderingController staffController;
+        BillingController billingController;
+        Client client;
 
         static FakeResponseHandler fakeResponseHandler;
 
@@ -30,6 +33,18 @@ namespace FrontEndApp.Test
         public static void AssemblyIntializer(TestContext context)
         {
             fakeResponseHandler = new FakeResponseHandler();
+
+            #region Client Handler
+
+            //My Messages
+            fakeResponseHandler.AddFakeResponse(
+                new Uri("http://localhost:50143/"),
+                new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new ObjectContent<String>("Client Success", new JsonMediaTypeFormatter())
+                });
+
+            #endregion
 
             #region Messaging Handler
             //My Messages
@@ -131,6 +146,7 @@ namespace FrontEndApp.Test
                          }, new JsonMediaTypeFormatter())
                  });
 
+            //Logout
             fakeResponseHandler.AddFakeResponse(
                  new Uri("https://localhost:44347/Account/Logout"),
                  new HttpResponseMessage(HttpStatusCode.OK)
@@ -145,6 +161,46 @@ namespace FrontEndApp.Test
                          }, new JsonMediaTypeFormatter())
                  });
 
+            //View Users Page
+            fakeResponseHandler.AddFakeResponse(
+                 new Uri("https://localhost:44347/Account/ViewUserRoles"),
+                 new HttpResponseMessage(HttpStatusCode.OK)
+                 {
+                     Content = new ObjectContent<String>("Auth View User Roles Success", new JsonMediaTypeFormatter())
+                 });
+
+            //Edit Role Page
+            fakeResponseHandler.AddFakeResponse(
+                 new Uri("https://localhost:44347/Account/EditRole/1"),
+                 new HttpResponseMessage(HttpStatusCode.OK)
+                 {
+                     Content = new ObjectContent<String>("Auth Edit Role Success", new JsonMediaTypeFormatter())
+                 });
+
+            //Save Role
+            fakeResponseHandler.AddFakeResponse(
+                 new Uri("https://localhost:44347/Account/SaveRole?userId=1&_SelectedRoleID=1"),
+                 new HttpResponseMessage(HttpStatusCode.OK)
+                 {
+
+                 });
+
+            //Edit Permission Page
+            fakeResponseHandler.AddFakeResponse(
+                 new Uri("https://localhost:44347/Account/EditPermission/1"),
+                 new HttpResponseMessage(HttpStatusCode.OK)
+                 {
+                     Content = new ObjectContent<String>("Auth Edit Permission Success", new JsonMediaTypeFormatter())
+                 });
+
+            //Save Permission
+            fakeResponseHandler.AddFakeResponse(
+                 new Uri("https://localhost:44347/Account/SavePermission?userId=1&_SelectedRoleID=1"),
+                 new HttpResponseMessage(HttpStatusCode.OK)
+                 {
+
+                 });
+
             #endregion
 
             #region Cart Handler
@@ -154,6 +210,13 @@ namespace FrontEndApp.Test
                  new HttpResponseMessage(HttpStatusCode.OK)
                  {
                      Content = new ObjectContent<String>("Cart Index Success", new JsonMediaTypeFormatter())
+                 });
+            //Cart Orders
+            fakeResponseHandler.AddFakeResponse(
+                 new Uri("http://localhost:54997/api/CustomerOrdering/View/Orders"),
+                 new HttpResponseMessage(HttpStatusCode.OK)
+                 {
+                     Content = new ObjectContent<String>("Cart Orders Success", new JsonMediaTypeFormatter())
                  });
             #endregion
 
@@ -187,7 +250,7 @@ namespace FrontEndApp.Test
                  new Uri("http://localhost:51520/User/EditProfilePost"),
                  new HttpResponseMessage(HttpStatusCode.OK)
                  {
-                     
+
                  });
             #endregion
 
@@ -216,6 +279,58 @@ namespace FrontEndApp.Test
                      Content = new ObjectContent<String>("Invoice details Success", new JsonMediaTypeFormatter())
                  });
             #endregion
+
+            #region Staff Ordering Handler
+
+            //Staff Order Index Page
+            fakeResponseHandler.AddFakeResponse(
+                 new Uri("http://localhost:50492/api/StaffOrdering/View/Products"),
+                 new HttpResponseMessage(HttpStatusCode.OK)
+                 {
+                     Content = new ObjectContent<String>("Staff Index Success", new JsonMediaTypeFormatter())
+                 });
+
+            //Staff Order Cart Page
+            fakeResponseHandler.AddFakeResponse(
+                 new Uri("http://localhost:50492/api/StaffOrdering/View/Cart"),
+                 new HttpResponseMessage(HttpStatusCode.OK)
+                 {
+                     Content = new ObjectContent<String>("Staff Cart Success", new JsonMediaTypeFormatter())
+                 });
+
+            //Staff Order LowStock Page
+            fakeResponseHandler.AddFakeResponse(
+                 new Uri("http://localhost:50492/api/StaffOrdering/View/LowStock"),
+                 new HttpResponseMessage(HttpStatusCode.OK)
+                 {
+                     Content = new ObjectContent<String>("Staff LowStock Success", new JsonMediaTypeFormatter())
+                 });
+
+            //Staff Order Orders Page
+            fakeResponseHandler.AddFakeResponse(
+                 new Uri("http://localhost:50492/api/StaffOrdering/View/Orders"),
+                 new HttpResponseMessage(HttpStatusCode.OK)
+                 {
+                     Content = new ObjectContent<String>("Staff Orders Success", new JsonMediaTypeFormatter())
+                 });
+
+            //Staff Order Single Order Page
+            fakeResponseHandler.AddFakeResponse(
+                 new Uri("http://localhost:50492/api/StaffOrdering/View/Products/Order/1"),
+                 new HttpResponseMessage(HttpStatusCode.OK)
+                 {
+                     Content = new ObjectContent<String>("Staff Single Order Success", new JsonMediaTypeFormatter())
+                 });
+
+            //Staff Order Product Details Page
+            fakeResponseHandler.AddFakeResponse(
+                 new Uri("http://localhost:50492/api/StaffOrdering/View/ProductDetails?ean=1"),
+                 new HttpResponseMessage(HttpStatusCode.OK)
+                 {
+                     Content = new ObjectContent<String>("Staff Product Details Success", new JsonMediaTypeFormatter())
+                 });
+
+            #endregion
         }
 
         [TestInitialize]
@@ -230,6 +345,8 @@ namespace FrontEndApp.Test
 
             var token = TokenGenerator.UserToken("Staff");
             var testClaim = new ClaimsPrincipal(new ClaimsIdentity(TokenGenerator.UserToken("Staff").Claims));
+
+            client = new Client();
 
             accountController = new AccountController(config, fakeResponseHandler);
             accountController.ControllerContext = new ControllerContext()
@@ -290,6 +407,24 @@ namespace FrontEndApp.Test
                 }
             };
             invoiceController.ControllerContext.HttpContext.Request.Headers.Add("Authorization", "Bearer " + new JwtSecurityTokenHandler().WriteToken(token));
+
+            staffController = new StaffOrderingController(config, fakeResponseHandler);
+            staffController.ControllerContext = new ControllerContext()
+            {
+                HttpContext = new DefaultHttpContext
+                {
+                    User = testClaims
+                }
+            };
+            staffController.ControllerContext.HttpContext.Request.Headers.Add("Authorization", "Bearer " + new JwtSecurityTokenHandler().WriteToken(token));
+
+        }
+
+        [TestMethod]
+        public void ClientSuccess()
+        {
+            var response = client.GetClient("http://localhost:50143/", "Account", "token", "Error", fakeResponseHandler);
+            Assert.AreNotEqual("Client Success", response.PartialView);
         }
 
         #region Auth Tests
@@ -341,6 +476,45 @@ namespace FrontEndApp.Test
             var response = (RedirectToActionResult)accountController.Logout();
             Assert.AreEqual("Home", response.ControllerName);
         }
+
+        [TestMethod]
+        public void AccountViewUserRolesSuccess()
+        {
+            var response = (ViewResult)accountController.ViewUserRoles();
+            var model = (PartialVM)response.Model;
+            Assert.AreNotEqual("Auth View User Roles Success", model.PartialView);
+        }
+
+        [TestMethod]
+        public void AccountEditRoleSuccess()
+        {
+            var response = (ViewResult)accountController.EditRole("1");
+            var model = (PartialVM)response.Model;
+            Assert.AreNotEqual("Auth Edit Role Success", model.PartialView);
+        }
+
+        [TestMethod]
+        public void AccountSaveRoleSuccess()
+        {
+            var response = (RedirectToActionResult)accountController.SaveRole("1", "1");
+            Assert.AreEqual("Account", response.ControllerName);
+        }
+
+        [TestMethod]
+        public void AccountEditPermissionSuccess()
+        {
+            var response = (ViewResult)accountController.EditPermission("1");
+            var model = (PartialVM)response.Model;
+            Assert.AreNotEqual("Auth Edit Permission Success", model.PartialView);
+        }
+
+        [TestMethod]
+        public void AccountSavePermissionSuccess()
+        {
+            var response = (RedirectToActionResult)accountController.SavePermission("1", "1");
+            Assert.AreEqual("Account", response.ControllerName);
+        }
+
         #endregion
 
         #region Cart Tests
@@ -353,6 +527,13 @@ namespace FrontEndApp.Test
             Assert.AreNotEqual("Cart Index Success", model.PartialView);
         }
 
+        [TestMethod]
+        public void CartMyOrdersSuccess()
+        {
+            var response = (ViewResult)cartcontroller.MyOrders();
+            var model = (PartialVM)response.Model;
+            Assert.AreNotEqual("Cart Orders Success", model.PartialView);
+        }
         #endregion
 
         #region Product Tests
@@ -485,6 +666,58 @@ namespace FrontEndApp.Test
             var response = (ViewResult)invoiceController.InvoicesDetails("1");
             var model = (PartialVM)response.Model;
             Assert.AreNotEqual("Invoice details Success", model.PartialView);
+        }
+
+        #endregion
+
+        #region Staff Tests
+
+        [TestMethod]
+        public void StaffIndexSuccess()
+        {
+            var response = (ViewResult)staffController.Index();
+            var model = (PartialVM)response.Model;
+            Assert.AreNotEqual("Staff Index Success", model.PartialView);
+        }
+
+        [TestMethod]
+        public void StaffCartSuccess()
+        {
+            var response = (ViewResult)staffController.Cart();
+            var model = (PartialVM)response.Model;
+            Assert.AreNotEqual("Staff Cart Success", model.PartialView);
+        }
+
+        [TestMethod]
+        public void StaffLowStockSuccess()
+        {
+            var response = (ViewResult)staffController.LowStock();
+            var model = (PartialVM)response.Model;
+            Assert.AreNotEqual("Staff LowStock Success", model.PartialView);
+        }
+
+        [TestMethod]
+        public void StaffOrdersSuccess()
+        {
+            var response = (ViewResult)staffController.Orders();
+            var model = (PartialVM)response.Model;
+            Assert.AreNotEqual("Staff Orders Success", model.PartialView);
+        }
+
+        [TestMethod]
+        public void StaffSingleOrderSuccess()
+        {
+            var response = (ViewResult)staffController.Order(1);
+            var model = (PartialVM)response.Model;
+            Assert.AreNotEqual("Staff Single Order Success", model.PartialView);
+        }
+
+        [TestMethod]
+        public void StaffProductDetailsSuccess()
+        {
+            var response = (ViewResult)staffController.ProductDetails("1");
+            var model = (PartialVM)response.Model;
+            Assert.AreNotEqual("Staff Product Details Success", model.PartialView);
         }
 
         #endregion

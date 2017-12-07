@@ -33,7 +33,7 @@ namespace FrontEndApp.Controllers
             }
             
             PartialVM vm = client.GetClient(accountServiceLink, "/Account/Login", cookievalue, "Login Service Down", _handler);
-            return View("Shared/Simple", vm);
+            return View(vm);
         }
 
         [HttpPost]
@@ -68,7 +68,7 @@ namespace FrontEndApp.Controllers
             }
 
             PartialVM vm = client.GetClient(accountServiceLink, "/Account/Register", cookievalue, "Register Service Down", _handler);
-            return View("Shared/Simple", vm);
+            return View(vm);
         }
 
         [HttpPost]
@@ -120,7 +120,7 @@ namespace FrontEndApp.Controllers
             }
 
             PartialVM vm = client.GetClient(accountServiceLink, "/Account/ViewUserRoles", cookievalue, "Auth Service Down", _handler);
-            return View("Shared/Simple", vm);
+            return View(vm);
         }
 
         public IActionResult EditRole(string id)
@@ -135,7 +135,7 @@ namespace FrontEndApp.Controllers
             }
 
             PartialVM vm = client.GetClient(accountServiceLink, "/Account/EditRole/" + id, cookievalue, "Auth Service Down", _handler);
-            return View("Shared/Simple", vm);
+            return View(vm);
         }
 
         [HttpPost]
@@ -168,7 +168,7 @@ namespace FrontEndApp.Controllers
             }
 
             PartialVM vm = client.GetClient(accountServiceLink, "/Account/EditPermission/" + id, cookievalue, "Auth Service Down", _handler);
-            return View("Shared/Simple", vm);
+            return View(vm);
         }
 
         [HttpPost]
