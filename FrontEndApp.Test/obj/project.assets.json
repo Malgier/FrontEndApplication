@@ -14200,7 +14200,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Will\\.nuget\\packages\\": {},
+    "C:\\Users\\p4049297\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -14209,17 +14209,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Will\\Documents\\GitHub\\FrontEndApplication\\FrontEndApp.Test\\FrontEndApp.Test.csproj",
+      "projectUniqueName": "C:\\Users\\p4049297\\Source\\Repos\\FrontEndApplication\\FrontEndApp.Test\\FrontEndApp.Test.csproj",
       "projectName": "FrontEndApp.Test",
-      "projectPath": "C:\\Users\\Will\\Documents\\GitHub\\FrontEndApplication\\FrontEndApp.Test\\FrontEndApp.Test.csproj",
-      "packagesPath": "C:\\Users\\Will\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Will\\Documents\\GitHub\\FrontEndApplication\\FrontEndApp.Test\\obj\\",
+      "projectPath": "C:\\Users\\p4049297\\Source\\Repos\\FrontEndApplication\\FrontEndApp.Test\\FrontEndApp.Test.csproj",
+      "packagesPath": "C:\\Users\\p4049297\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\p4049297\\Source\\Repos\\FrontEndApplication\\FrontEndApp.Test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Will\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\p4049297\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -14232,8 +14232,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\Will\\Documents\\GitHub\\FrontEndApplication\\FrontEndApp\\FrontEndApp\\FrontEndApp.csproj": {
-              "projectPath": "C:\\Users\\Will\\Documents\\GitHub\\FrontEndApplication\\FrontEndApp\\FrontEndApp\\FrontEndApp.csproj"
+            "C:\\Users\\p4049297\\Source\\Repos\\FrontEndApplication\\FrontEndApp\\FrontEndApp\\FrontEndApp.csproj": {
+              "projectPath": "C:\\Users\\p4049297\\Source\\Repos\\FrontEndApplication\\FrontEndApp\\FrontEndApp\\FrontEndApp.csproj"
             }
           }
         }

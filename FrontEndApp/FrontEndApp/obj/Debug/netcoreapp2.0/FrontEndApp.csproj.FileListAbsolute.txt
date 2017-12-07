@@ -86,3 +86,14 @@ C:\Users\Jason\Source\Repos\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debu
 C:\Users\Jason\Source\Repos\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.AssemblyInfo.cs
 C:\Users\Jason\Source\Repos\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.dll
 C:\Users\Jason\Source\Repos\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.pdb
+C:\Users\p4049297\Source\Repos\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.deps.json
+C:\Users\p4049297\Source\Repos\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.runtimeconfig.json
+C:\Users\p4049297\Source\Repos\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.runtimeconfig.dev.json
+C:\Users\p4049297\Source\Repos\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.dll
+C:\Users\p4049297\Source\Repos\FrontEndApplication\FrontEndApp\FrontEndApp\bin\Debug\netcoreapp2.0\FrontEndApp.pdb
+C:\Users\p4049297\Source\Repos\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.csprojResolveAssemblyReference.cache
+C:\Users\p4049297\Source\Repos\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.csproj.CoreCompileInputs.cache
+C:\Users\p4049297\Source\Repos\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.AssemblyInfoInputs.cache
+C:\Users\p4049297\Source\Repos\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.AssemblyInfo.cs
+C:\Users\p4049297\Source\Repos\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.dll
+C:\Users\p4049297\Source\Repos\FrontEndApplication\FrontEndApp\FrontEndApp\obj\Debug\netcoreapp2.0\FrontEndApp.pdb

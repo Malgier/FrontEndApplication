@@ -4,21 +4,20 @@
 <script type="text/javascript" src="~/assets/ExecuteAJAX.js"></script>
 <script type="text/javascript" src="~/lib/jQuery/dist/jquery.js"></script>
 
+
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ThAmCo</title>
-
+    <link rel="stylesheet" href="~/css/site.css" />
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
@@ -38,24 +37,39 @@
                     @if (User.IsInRole("Staff") || User.IsInRole("Admin"))
                     {
                         <li><a asp-area="" asp-controller="Profile" asp-action="Index">Users</a></li>
+                        <li><a asp-area="" asp-controller="StaffOrdering" asp-action="Index">Purchase Stock</a></li>
+                        <li><a asp-area="" asp-controller="StaffOrdering" asp-action="Orders">Orders</a></li>
+                        <li><a asp-area="" asp-controller="StaffOrdering" asp-action="LowStock">Low Stock</a></li>
                     }
-                    <li><a asp-area="" asp-controller="Cart" asp-action="Index">Cart</a></li>
+                    else if (User.IsInRole("Customer"))
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Products</a></li>
+                        <li><a asp-area="" asp-controller="Cart" asp-action="MyOrders">Orders</a></li>
+                        <li><a asp-area="" asp-controller="StaffOrdering" asp-action="LowStock">Low Stock</a></li>
+                        <li><a asp-area="" asp-controller="Invoice" asp-action="LowStock">Low Stock</a></li>
+                    }
                 </ul>
-                @if (!User.IsInRole("User") && !User.IsInRole("Customer") && !User.IsInRole("Staff") && !User.IsInRole("Admin"))
-                {
-                    <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right">
+                    @if (User.IsInRole("Staff") || User.IsInRole("Admin"))
+                    {
+                        <li>Cart</li>
+                    }
+                    else if (User.IsInRole("Customer"))
+                    {
+                        <li>Cart</li>
+                    }
+                    @if (!User.IsInRole("User") && !User.IsInRole("Customer") && !User.IsInRole("Staff") && !User.IsInRole("Admin"))
+                    {
                         <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
                         <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
-                    </ul>
-                }
-                else
-                {
-                    <ul class="nav navbar-nav navbar-right">
+                    }
+                    else
+                    {
                         <li style="color: white">Welcome @User.FindFirst(System.Security.Claims.ClaimTypes.Name).Value</li>
                         <li><a asp-area="" asp-controller="Profile" asp-action="Profile" asp-route-id="@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value">Profile</a></li>
                         <li><a asp-area="" asp-controller="Account" asp-action="Logout">Log Out</a></li>
-                    </ul>
-                }
+                    }
+                </ul>
             </div>
         </div>
     </nav>
